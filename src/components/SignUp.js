@@ -10,7 +10,7 @@ function SignUp(props) {
 
     let navigateToLogin=()=>{
         // console.log(props);
-        props.history.push('/login')
+        props.history.push('/')
        }
 
     let initialValues={
@@ -24,8 +24,8 @@ function SignUp(props) {
     }
 
     let validationSchema = yup.object().shape({
-        firstName: yup.string().firstName("please enter valid First name").required("Firstname is required"),
-        lastName: yup.string().lastName("please enter valid Last name").required("Lastname is required"),
+        firstName: yup.string().min(3).required("Firstname is required"),
+        lastName: yup.string().min(3).required("Lastname is required"),
         username: yup.string().email("please enter email").required("username required"),
         password: yup.string().required("password is required").min("5").max("10"),
         
@@ -47,7 +47,7 @@ function SignUp(props) {
                 
             <Form>
             
-
+                <div className='container'>
                 <div class="mb-3">
                     <label htmlfor="exampleInputEmail1" class="form-label">First Name</label>
                     <Field
@@ -81,7 +81,8 @@ function SignUp(props) {
                 <button type="submit" className="btn btn-primary"  >Submit</button>
 
                 <h4 style={{cursor:'pointer'}} onClick={navigateToLogin}>Already have an account? Login here !</h4>
-            </Form>
+                </div>
+                </Form>
             )}
             </Formik>
         </div>
